@@ -1,0 +1,86 @@
+﻿@model PagedList.IPagedList<DABanDan.Models.NguoiDung>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản Lí người dùng";
+}
+<center>
+    <h2>Quản Lí User</h2>
+    <br />
+    @using (Html.BeginForm("Index", "NguoiDung", FormMethod.Get))
+    {
+        <p>
+            Tìm kiếm: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </p>
+        <p>
+            @Html.ActionLink("Load User", "Index")
+        </p>
+    }
+</center>
+<p>
+    @Html.ActionLink("Thêm Mới", "CreateND")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().QuyenHan.TenQH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Ho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MatKhau)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.QuyenHan.TenQH)
+    </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditND", new { @idnd = item.MaND }) |
+            @Html.ActionLink("Xóa", "DeleteND", new { @idnd = item.MaND })
+        </td>
+    </tr>
+}
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",new { page}))

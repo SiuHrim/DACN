@@ -1,0 +1,78 @@
+﻿@model DABanDan.InputModels.Product.ProductViewModel
+@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm | Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="single-product-area section-padding-100 clearfix">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-50">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Default")">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Detail","Default")">Chi Tiết</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a  class="gallery_img" href="@Model.ImageUrl">
+                                    <img class="d-block w-100" src="@Model.ImageUrl" alt="First slide">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                  
+
+                        <!-- Product Meta Data -->
+                        <div class="product-meta-data">
+                            <div class="line"></div>
+                            <p class="product-price">@Model.Point VND</p>
+                            <a href="@Url.Action("Detail","Default")">
+                                <h6>@Model.Title</h6>
+                            </a>
+
+
+                            <!-- Ratings & Review -->
+                            <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="review">
+                                    <a href="#">Write A Review</a>
+                                </div>
+                            </div>
+                            <!-- Avaiable -->
+                        </div>
+
+                        <div class="short_overview my-5">
+                        <p style="font-family: 'Times New Roman'">Màu: @Model.Color</p>
+                        <p style="text-indent:5px; font-family: 'Times New Roman'">@Model.Description</p>
+                        </div>
+                                  <!-- Add to Cart Form -->
+                        <form class="cart clearfix" method="post">
+                            <h4><a class="btn amado-btn" href="/Them-Gio-Hang?maSP=@Model.Id&soLuong=1">Thêm</a></h4>
+                        </form>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Details Area End -->

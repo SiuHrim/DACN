@@ -1,0 +1,21 @@
+﻿@model DABanDan.InputModels.Product.ProductIndexModel
+@{
+    ViewBag.Title = "Trang chủ bán hàng | Home";
+}
+<div class="products-catagories-area clearfix">
+    <div class="amado-pro-catagory clearfix" style="position: relative; height: 6463.86px;">
+        @foreach (var item in Model.Products)
+        {
+                <!-- Single Catagory -->
+            <div class="single-products-catagory clearfix" style="position: absolute; left: 0%; top: 0px;">
+                <a href="@Url.Action("Detail",new {id = @item.Id })">
+                    <img src="@item.ImageUrl" alt="" style="width: 50%">
+                    <!-- Hover Content -->
+                    <div class="hover-content" style="padding: 120px;">
+                        <div class="line">@item.Point VND</div>
+                        <h6>@item.Title</h6>
+                    </div>
+            </div>
+        }
+    </div>
+</div>

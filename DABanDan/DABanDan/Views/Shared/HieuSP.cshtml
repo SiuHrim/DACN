@@ -1,0 +1,24 @@
+﻿@model List<DABanDan.Models.HieuDan>
+@{
+    ViewBag.Title = "Trang chủ bán hàng | Shop";
+}
+ <!-- ##### BRAND ##### -->
+<div class="widget brands mb-50">
+    <!-- Widget Title -->
+    <h6 class="widget-title mb-30" style="font-family:'Times New Roman'" >____HIỆU ĐÀN</h6>
+    <div class="catagories-menu">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("TTHieuSP","Product", new { mh = item.MaHieu })">@item.TenHieu</a></li>
+            }
+        </ul>
+    </div>
+    
+</div>
+
+
+
+
+
+

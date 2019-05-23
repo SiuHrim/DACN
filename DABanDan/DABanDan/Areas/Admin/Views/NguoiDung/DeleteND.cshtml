@@ -1,0 +1,89 @@
+﻿@model DABanDan.Models.NguoiDung
+
+@{
+    ViewBag.Title = "DeleteND";
+}
+
+<center>
+    <h2>Xóa User</h2>
+</center>
+
+<h3>Bạn chắc chắn muốn xóa User này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuyenHan.TenQH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyenHan.TenQH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "Index")
+        </div>
+    }
+</div>

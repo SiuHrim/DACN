@@ -1,0 +1,21 @@
+﻿@model List<DABanDan.Models.LoaiDan>
+@{ 
+    ViewBag.Title = "Trang chủ bán hàng | Shop";
+}
+    <!-- ##### CAGETORY ##### -->
+        <!-- Widget Title -->
+        <h6 class="widget-title mb-10" style="font-family:'Times New Roman'">____LOẠI ĐÀN</h6>
+        <!--  Catagories  -->
+        <div class="catagories-menu">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li><a href="/san-pham/@item.MaLoai">@item.TenLoai</a></li>
+                }
+            </ul>
+        </div>
+ 
+
+
+
+

@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title  -->
+    <title>Trang Chủ Guitar</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/Content/Client/img/core-img/favicon.ico">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="~/Content/Client/css/core-style.css">
+    <link rel="stylesheet" href="~/Content/Client/css/style.css">
+    <link href="~/Content/Client/css/jquery-ui.css" rel="stylesheet" />
+
+    <!-- Jquery -->
+    <script src="~/Content/Client/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="~/Content/Client/js/jquery-ui.js"></script>
+</head>
+
+<body>
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        @using (Html.BeginForm("Index", "Default", FormMethod.Post))
+                        {
+                            @Html.TextBox("tk"); <br />
+                            <input type="submit" value="Tìm kiếm" width="100" height="50" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="@Url.Action("Index", "Default")"><img src="~/Content/Client/img/core-img/Logos.png" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="@Url.Action("Index", "Default")"><img src="~/Content/Client/img/core-img/Logos.png" alt=""></a>
+                <hr />
+                <center>
+                    <nav class="amado-nav">
+                        <ul style="font-family: 'Times New Roman'">
+                            <li><a>LH: 0385937251 </a></li>
+                            </ul>
+                    </nav>
+                </center>
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li class="active"><a href="@Url.Action("Index", "Default")">Trang Chủ</a></li>
+                    <li><a href="@Url.Action("Index", "Shop")">Sản Phẩm</a></li>
+                    <li><a href="@Url.Action("Index","Cart")">Giỏ Hàng</a></li>
+                    <li><a href="@Url.Action("DangKy","User")">Đăng Kí</a></li>
+                </ul>
+            </nav>
+            <!-- Cart Menu -->
+            @{ Html.RenderAction("CtGioHang", "Cart");}
+            <!-- Cart Menu -->
+            <!-- Social Button -->
+            <div class="social-info d-flex justify-content-between">
+                <a href="https://www.pinterest.com/"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/rom.david.7106"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+        </header>
+        <!-- Header Area End -->
+        <!-- Product Catagories Area Start -->
+        @RenderBody()
+    </div>
+    <footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single_widget_area">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a href="@Url.Action("Index","Default")"><img width="30%" src="~/Content/Client/img/core-img/Logos.png" alt=""></a>
+                        </div>
+                        <!-- Copywrite Text -->
+                        <p class="copywrite">
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="single_widget_area">
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <nav class="navbar navbar-expand-lg justify-content-end">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+                                <div class="collapse navbar-collapse" id="footerNavContent">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index","Default")">Trang chủ</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index", "Shop")">Sản Phẩm</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index","Cart")">Giỏ Hàng</a>
+                                        </li>
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="@Url.Action("LoginAdmin", "LoginAdmin", new { Area = "Admin" })">Admin(QTV)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+
+    <script src="~/Content/Client/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/Content/Client/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/Content/Client/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="~/Content/Client/js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/Content/Client/js/active.js"></script>
+    <!-- nhúng tìm kiếm js -->
+    <script src="~/Areas/Client/Controller/timkiemControler.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    <script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    @RenderSection("jsFooter", required: false)
+</body>
+
+</html>

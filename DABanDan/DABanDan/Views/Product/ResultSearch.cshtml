@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DABanDan.Models.SanPham>
+
+@{
+    ViewBag.Title = "ResultSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ResultSearch</h2>
+@ViewBag.Result
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HieuDan.TenHieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiDan.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMG)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HieuDan.TenHieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiDan.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MauSac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMG)
+        </td>
+    </tr>
+}
+
+</table>

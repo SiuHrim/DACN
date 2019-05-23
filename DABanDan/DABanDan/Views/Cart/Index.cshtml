@@ -1,0 +1,94 @@
+﻿@model List<DABanDan.InputModels.GioHang.GioHang>
+@{
+    ViewBag.Title = "Giỏ Hàng Của Bạn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Areas/Client/Controller/giohangController.js"></script>
+}
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="cart-title mt-50">
+                    <center><h2 style="font-family:'Times New Roman'">GIỎ HÀNG</h2></center>
+                </div>
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+                        @if (Model == null || Model.Count == 0)
+                        {
+                            <hr />
+                                <center><a>CHƯA CÓ SẢN PHẨM NÀO!</a></center>
+                                <hr />
+                        }
+                        else
+                        {
+                            <thead>
+                                <tr>
+                                    <th>Ảnh Sản Phẩm</th>
+                                    <th>Tên Đàn</th>
+                                    <th>Đơn Giá</th>
+                                    <th>Số Lượng</th>
+                                    <th>Thành Tiền</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="cart_product_img">
+                                                <a href="#"><img src="@item.HinhAnh" alt="Product"></a>
+                                            </td>
+                                            <td class="cart_product_desc">
+                                                <h5>@item.TenSP</h5>
+                                            </td>
+                                            <td class="price">
+                                                <span>@item.DonGia.ToString("#,##0").Replace(',', '.') VND</span>
+                                            </td>
+                                            <td class="qty">
+                                                <form action="@Url.Action("Update")" method="get">
+                                                    <input  type="hidden" name="SanPhamID" value="@item.MaSP" />
+                                                    <input style="font-family:'Times New Roman'"  type="text" min="1" step="1" name="soluongmoi" value="@item.SoLuong" size="1" />
+                                                    <button style="width:35%" type="submit" class="btn btn-primary btn-sm" ><i class="fa fa-pinterest" aria-hidden="true">Up</i></button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                @item.TongTien.ToString("#,##0").Replace(',', '.') VND
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Delete",new { SanPhamID = item.MaSP})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                        }
+
+                    </table>
+                    <thead>
+                        <table class="table table-responsive">
+                            <tr>
+                                <button><a id="CTN">Tiếp Tục Mua Hàng</a></button> |
+                                <button><a id="DLT">Xóa Giỏ Hàng</a></button> |
+                            </tr>
+                        </table>
+                    </thead>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="cart-summary">
+                    <center><h5 style="font-family:'Times New Roman'">Chi Tiết</h5></center>
+                    <ul class="summary-table">
+                        <li><span style="font-family:'Times New Roman'">Tổng SL:</span><span style="font-family:'Times New Roman'">@Model.Sum(m => m.SoLuong)</span></li>
+                        <li><span style="font-family:'Times New Roman'">VAT(3%):</span><span style="font-family:'Times New Roman'">@Model.Sum(m => m.TongTien * 0.03).ToString("#,##0").Replace(',', '.') VND</span></li>
+                        <li><span style="font-family:'Times New Roman'">Tổng Tiền:</span> <span style="font-family:'Times New Roman'">@Model.Sum(m => m.TongTien + m.TongTien * 0.03).ToString("#,##0").Replace(',', '.') VND</span></li>
+                    </ul>
+                    <div class="cart-btn mt-100">
+                        <a @Url.Action("ThanhToan", "Cart") class="btn amado-btn w-100">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

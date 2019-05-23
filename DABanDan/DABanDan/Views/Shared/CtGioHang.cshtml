@@ -1,0 +1,25 @@
+﻿@using DABanDan.Common
+@model List<DABanDan.InputModels.GioHang.GioHang>
+
+
+<hr />
+    <div class="cart-fav-search mb-100">
+        @{
+            var session = (UserLogin)Session[DABanDan.Common.CommonConstans.USER_SESSION];
+        }
+        @if (session == null)
+        {
+            <a href="@Url.Action("DangNhap","User")" class="fav-nav"><img src="~/Content/Client/img/core-img/favorites.png" alt="">Đăng Nhập</a>
+        }
+        else
+        {
+            <ul>
+                <center>
+                    <li style="font-family: 'Times New Roman'">Xin Chào: @session.UserName </li>
+                    <a style="font-family: 'Times New Roman';color:lightseagreen" href="@Url.Action("DangXuat", "User")">OUT</a>
+                </center> 
+            </ul>
+        }
+        <a href="@Url.Action("Index","Cart")" class="cart-nav"><img src="~/Content/Client/img/core-img/cart.png" alt="">Giỏ Hàng<span>(@Model.Count)</span></a>
+        <a href="#" class="search-nav"><img src="~/Content/Client/img/core-img/search.png" alt="">Tìm Kiếm</a>
+    </div>

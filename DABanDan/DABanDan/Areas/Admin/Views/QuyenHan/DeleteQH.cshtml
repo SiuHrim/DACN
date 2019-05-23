@@ -1,0 +1,41 @@
+﻿@model DABanDan.Models.QuyenHan
+
+@{
+    ViewBag.Title = "DeleteQH";
+}
+
+<center>
+    <h2>Xóa Quyền Hạn</h2>
+</center>
+
+<h3>Bạn muốn xóa quyền hạn này?</h3>
+<div>
+       <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenQH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Levels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Levels)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "Index")
+        </div>
+    }
+</div>

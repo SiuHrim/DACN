@@ -1,0 +1,54 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<DABanDan.Models.HieuDan>
+
+@{
+    ViewBag.Title = "Index";
+}
+<center>
+    <h2>Quản Lí Hiệu Đàn</h2>
+</center>
+<p>
+    @Html.ActionLink("Create New", "CreateHD")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaHieu)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenHieu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHieu)
+            </td>
+
+            <th>
+                @Html.DisplayFor(modelItem => item.TenHieu)
+            </th>
+            <td>
+                @Html.ActionLink("Edit", "EditHD", new { @IDHD = item.MaHieu }) |
+                @Html.ActionLink("Delete", "DeleteHD", new { @IDHD = item.MaHieu })
+            </td>
+        </tr>
+    }
+
+</table>
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="menu-trang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .menu-trang {
+        display: inline;
+    }
+</style>
+

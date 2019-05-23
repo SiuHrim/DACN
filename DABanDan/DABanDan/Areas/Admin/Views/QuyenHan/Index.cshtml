@@ -1,0 +1,56 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<DABanDan.Models.QuyenHan>
+
+@{
+    ViewBag.Title = "Index";
+}
+<center>
+    <h2>Quản Lí Quyền Hạn</h2>
+</center>
+<p>
+    @Html.ActionLink("Thêm Mới", "CreateQH")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenQH)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().Levels)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+         
+            <th>
+                @Html.DisplayFor(modelItem => item.TenQH)
+            </th>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Levels)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditQH", new { @IDQH = item.ID }) |
+                @Html.ActionLink("Xóa", "DeleteQH", new { @IDQH = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="menu-trang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .menu-trang {
+        display: inline;
+    }
+</style>
+
